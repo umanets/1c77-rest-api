@@ -1,0 +1,24 @@
+{
+  "name": "one-s-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rebuild-winax": "npm rebuild winax --arch=ia32",
+    "start:ia32": "npm run rebuild-winax && ..\\one-s-node\\node.exe index.js",
+    "start": "node index.js",
+    "release": "node scripts/release.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "winax": "^3.6.2"
+  },
+  "devDependencies": {
+    "fs-extra": "^11.1.1",
+    "archiver": "^5.3.1"
+  }
+}
