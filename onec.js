@@ -16,15 +16,20 @@ function get1CV7PIDs() {
         const pidStr = cols[1].replace(/"/g, '').trim();
         return parseInt(pidStr, 10);
       });
-  } catch {
+  } catch (error) {
+    console.warn('⚠️ Не удалось получить список процессов 1С:', error.message);
     return [];
   }
 }
 
 function connect1C(userName, password = "") {
+  const dbPath = process.env.ONEC_DB_PATH;
+  if (!dbPath) {
+    throw new Error('ONEC_DB_PATH is not set (path to the 1C 7.7 database folder)');
+  }
   const beforePIDs = get1CV7PIDs();
   v7 = new COMObject('V77.Application');
-  let initParams = '/d D:\\work\\one-s-trukr';
+  let initParams = `/d ${dbPath}`;
   if (userName) {
     initParams += ` /n "${userName}""`;
   }

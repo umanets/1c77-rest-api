@@ -57,3 +57,12 @@
 
 > 1С thick-client UI запускать **не нужно** — COM-сервер будет поднят автоматически;
 > база `one-s-trukr` должна существовать и содержать каталог `Контрагенты`.
+
+## Configuration
+
+Set the path to your 1C 7.7 database folder before starting:
+
+```powershell
+$env:ONEC_DB_PATH = 'D:\path\to\your\1c\database'
+npm start
+```
